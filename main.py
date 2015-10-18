@@ -20,9 +20,13 @@ class Character:
         self.width, self.height = width, height
         self.speed = [0,0]
         self.run = run
+        self.action = 0
 
     def get_sprite(self):
-        return self.sprites[self.direction]
+        index = self.direction
+        if self.action == 1:
+            index += 4
+        return self.sprites[index]
 
     def move(self, direction):
         # print("char", direction)
@@ -48,6 +52,9 @@ class Character:
         if self.rect.bottom > self.height:
             if self.speed[1] > 0:
                 self.speed[1] = 0
+
+    def stab(self, action):
+        self.action = action
 
     def update(self):
         self.rect = self.rect.move(self.speed)
@@ -95,7 +102,11 @@ knight_pics.append( pygame.image.load("knight_up.png") )
 knight_pics.append( pygame.image.load("knight_right.png") )
 knight_pics.append( pygame.image.load("knight_down.png") )
 knight_pics.append( pygame.image.load("knight_left.png") )
-        
+knight_pics.append( pygame.image.load("knight_upstab.png") )
+knight_pics.append( pygame.image.load("knight_rightstab.png") )
+knight_pics.append( pygame.image.load("knight_downstab.png") )
+knight_pics.append( pygame.image.load("knight_leftstab.png") )
+
  
 zombie_pics = []     
 zombie_pics.append( pygame.image.load("zombie_up.png") )
@@ -122,8 +133,11 @@ while 1:
                 knight.move(DIR_UP);
             if event.key == pygame.K_DOWN:
                 knight.move(DIR_DOWN);
+            if event.key == pygame.K_SPACE:
+                knight.stab(1)
         if event.type == pygame.KEYUP:
             knight.stop()
+            knight.stab(0)
 
     knight.update()
     
