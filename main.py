@@ -1,66 +1,12 @@
 import sys, pygame, time
+from character import Character, DIR_DOWN, DIR_LEFT, DIR_RIGHT, DIR_UP
+
+
 pygame.init()
 
 
-DIR_UP = 0
-DIR_RIGHT = 1
-DIR_DOWN = 2
-DIR_LEFT = 3
 
 
-class Character:
-
-    def __init__(self, width, height, pictures, run = 1):
-        self.sprites = []
-        for pic in pictures:
-            self.sprites.append( pic )
-            
-        self.rect = self.sprites[0].get_rect()
-        self.direction = DIR_UP
-        self.width, self.height = width, height
-        self.speed = [0,0]
-        self.run = run
-        self.action = 0
-
-    def get_sprite(self):
-        index = self.direction
-        if self.action == 1:
-            index += 4
-        return self.sprites[index]
-
-    def move(self, direction):
-        # print("char", direction)
-        self.direction = direction
-        if direction == DIR_LEFT:
-            self.speed = [-self.run, 0]
-        if direction == DIR_RIGHT:
-            self.speed = [self.run, 0]
-        if direction == DIR_UP:
-            self.speed = [0, -self.run]
-        if direction == DIR_DOWN:
-            self.speed = [0, self.run]
-
-        if self.rect.left < 0:
-            if self.speed[0] < 0:
-                self.speed[0] = 0
-        if self.rect.right > self.width:
-            if self.speed[0] > 0:
-                self.speed[0] = 0
-        if self.rect.top < 0:
-            if self.speed[1] < 0:
-                self.speed[1] = 0
-        if self.rect.bottom > self.height:
-            if self.speed[1] > 0:
-                self.speed[1] = 0
-
-    def stab(self, action):
-        self.action = action
-
-    def update(self):
-        self.rect = self.rect.move(self.speed)
-            
-    def stop(self):
-        self.speed = [0, 0]
 
 
 def chase(zombie, knight):
@@ -79,9 +25,40 @@ def chase(zombie, knight):
         
     # print("ZUZU", zombie.direction, zombie.speed)
         
-       
-        
-        
+def collision(zombie, knight):
+    if pygame.sprite.collide_rect(zombie, knight):
+        if knight.action == 1:
+            if zombie.rect.centerx > knight.rect.centerx:
+                if knight.direction == DIR_RIGHT:
+                    return "WIN"
+                else:
+                    return "LOOSE"
+            else:
+                if knight.direction == DIR_LEFT:
+                    return "WIN"
+                else:
+                    return "LOOSE"
+            if zombie.rect.centery > knight.rect.centery:
+                if knight.direction == DIR_UP:
+                    return "WIN"
+                else:
+                    return "LOOSE"
+            else:
+                if knight.direction == DIR_DOWN:
+                    return "WIN"
+                else:
+                    return "LOOSE"
+        else:
+            return "LOOSE"
+    else:
+        return ""
+
+
+
+
+
+
+
 
 size = width, height = 640, 480
 speed = [0, 0]
@@ -98,27 +75,30 @@ screen = pygame.display.set_mode(size)
 #knight_rect.move( [40, 100] )
 
 knight_pics = []
-knight_pics.append( pygame.image.load("knight_up.png") )
-knight_pics.append( pygame.image.load("knight_right.png") )
-knight_pics.append( pygame.image.load("knight_down.png") )
-knight_pics.append( pygame.image.load("knight_left.png") )
-knight_pics.append( pygame.image.load("knight_upstab.png") )
-knight_pics.append( pygame.image.load("knight_rightstab.png") )
-knight_pics.append( pygame.image.load("knight_downstab.png") )
-knight_pics.append( pygame.image.load("knight_leftstab.png") )
+knight_pics.append( pygame.image.load("res/knight_up.png") )
+knight_pics.append( pygame.image.load("res/knight_right.png") )
+knight_pics.append( pygame.image.load("res/knight_down.png") )
+knight_pics.append( pygame.image.load("res/knight_left.png") )
+knight_pics.append( pygame.image.load("res/knight_upstab.png") )
+knight_pics.append( pygame.image.load("res/knight_rightstab.png") )
+knight_pics.append( pygame.image.load("res/knight_downstab.png") )
+knight_pics.append( pygame.image.load("res/knight_leftstab.png") )
 
  
 zombie_pics = []     
-zombie_pics.append( pygame.image.load("zombie_up.png") )
-zombie_pics.append( pygame.image.load("zombie_right.png") )
-zombie_pics.append( pygame.image.load("zombie_down.png") )
-zombie_pics.append( pygame.image.load("zombie_left.png") )
+zombie_pics.append( pygame.image.load("res/zombie_up.png") )
+zombie_pics.append( pygame.image.load("res/zombie_right.png") )
+zombie_pics.append( pygame.image.load("res/zombie_down.png") )
+zombie_pics.append( pygame.image.load("res/zombie_left.png") )
  
  
 knight = Character(width, height, knight_pics, 2)
 zombie = Character(width, height, zombie_pics)
 #zombie.move(DIR_RIGHT)
 
+for i in range(100):
+    zombie.move(DIR_RIGHT)
+    zombie.update()
 
 while 1:
     for event in pygame.event.get():
@@ -126,13 +106,13 @@ while 1:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                knight.move(DIR_LEFT);
+                knight.move(DIR_LEFT)
             if event.key == pygame.K_RIGHT:
-                knight.move(DIR_RIGHT);
+                knight.move(DIR_RIGHT)
             if event.key == pygame.K_UP:
-                knight.move(DIR_UP);
+                knight.move(DIR_UP)
             if event.key == pygame.K_DOWN:
-                knight.move(DIR_DOWN);
+                knight.move(DIR_DOWN)
             if event.key == pygame.K_SPACE:
                 knight.stab(1)
         if event.type == pygame.KEYUP:
@@ -143,8 +123,13 @@ while 1:
     
 
     chase(zombie, knight)
+   
+    result = collision(zombie, knight)
+    if result != "":
+        print(result)
+        sys.exit()
             
-            
+
     zombie.update()
     screen.fill(background)
     screen.blit(knight.get_sprite(), knight.rect)

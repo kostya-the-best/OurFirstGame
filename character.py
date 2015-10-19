@@ -1,5 +1,11 @@
 __author__ = 'Volodymyr'
 
+
+DIR_UP = 0
+DIR_RIGHT = 1
+DIR_DOWN = 2
+DIR_LEFT = 3
+
 class Character:
 
     def __init__(self, width, height, pictures, run = 1):
