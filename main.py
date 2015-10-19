@@ -1,4 +1,4 @@
-import sys, pygame, time
+import sys, pygame, time, random
 from character import Character, DIR_DOWN, DIR_LEFT, DIR_RIGHT, DIR_UP
 
 
@@ -56,7 +56,11 @@ def collision(zombie, knight):
 
 
 
-
+def popup(msg):
+    pygame.draw.rect(screen, (0,0,0), (175, 75, 200, 100), 2)
+    pygame.display.update()
+    screen.blit(font.render(msg, True, (255,0,0)), (200, 100))
+    pygame.display.update()
 
 
 
@@ -65,7 +69,7 @@ speed = [0, 0]
 background = 255, 255, 255
 screen = pygame.display.set_mode(size)
 
-
+font = pygame.font.SysFont('Arial', 25)
 
 
 #zombie = pygame.image.load("zombie_up.png")
@@ -123,12 +127,8 @@ while 1:
     
 
     chase(zombie, knight)
-   
-    result = collision(zombie, knight)
-    if result != "":
-        print(result)
-        sys.exit()
-            
+
+
 
     zombie.update()
     screen.fill(background)
@@ -138,3 +138,12 @@ while 1:
     
     pygame.display.flip()
     time.sleep(0.01)
+
+    result = collision(zombie, knight)
+    if result != "":
+        #print(result)
+        popup(result)
+        time.sleep(1)
+        r = pygame.Rect(random.randint(0, 640), random.randint(0, 480), zombie.rect.width, zombie.rect.height )
+        zombie.rect = r
+        # sys.exit()
