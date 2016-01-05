@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="9">
+ <tileset firstgid="1" name="our_tiles" tilewidth="32" tileheight="32" tilecount="40">
+  <image source="res/our_tiles.png" width="256" height="160"/>
+  <terraintypes>
+   <terrain name="grass" tile="-1"/>
+   <terrain name="water" tile="-1"/>
+  </terraintypes>
+  <tile id="0" terrain="0,0,0,1"/>
+  <tile id="1" terrain="0,0,1,1"/>
+  <tile id="5" terrain="0,0,1,0"/>
+  <tile id="9" terrain="1,1,1,0"/>
+  <tile id="10" terrain="1,1,0,0"/>
+  <tile id="11" terrain="1,1,0,1"/>
+  <tile id="12" terrain="1,1,1,1"/>
+  <tile id="13" terrain="1,0,1,0"/>
+  <tile id="17" terrain="1,0,1,0"/>
+  <tile id="18" terrain="0,0,0,0"/>
+  <tile id="19" terrain="0,1,0,1"/>
+  <tile id="24" terrain="0,1,0,1"/>
+  <tile id="25" terrain="1,0,1,1"/>
+  <tile id="26" terrain="0,0,1,1"/>
+  <tile id="27" terrain="0,1,1,1"/>
+  <tile id="32" terrain="0,1,0,0"/>
+  <tile id="36" terrain="1,1,0,0"/>
+  <tile id="37" terrain="1,0,0,0"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztk60OgDAMhAcCw49gM4DC8P6PSBFLFtL1Eri5is+0yd2u7WIIIToqnXAIQwPd3tDdhFlYyb4J6Lbyzbp7JTPqf+UUJkO77JeZ0X4Y3knp5dpCmre2S+1dT20ULuK8tQzWu1i3rfmiXTB8a3lyn50Z/VW0i7++librjt950I2y7thxWNxHUCve
+  </data>
+ </layer>
+ <objectgroup name="Charz">
+  <object id="8" name="Knight" gid="7" x="0" y="32" width="32" height="32"/>
+ </objectgroup>
+</map>

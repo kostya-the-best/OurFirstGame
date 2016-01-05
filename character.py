@@ -1,5 +1,5 @@
 __author__ = 'Volodymyr'
-
+import pygame
 
 DIR_UP = 0
 DIR_RIGHT = 1
@@ -59,3 +59,27 @@ class Character:
 
     def stop(self):
         self.speed = [0, 0]
+
+
+def init(width, height):
+    knight_pics = []
+    knight_pics.append( pygame.image.load("res/knight_up.png") )
+    knight_pics.append( pygame.image.load("res/knight_right.png") )
+    knight_pics.append( pygame.image.load("res/knight_down.png") )
+    knight_pics.append( pygame.image.load("res/knight_left.png") )
+    knight_pics.append( pygame.image.load("res/knight_upstab.png") )
+    knight_pics.append( pygame.image.load("res/knight_rightstab.png") )
+    knight_pics.append( pygame.image.load("res/knight_downstab.png") )
+    knight_pics.append( pygame.image.load("res/knight_leftstab.png") )
+
+
+    zombie_pics = []
+    zombie_pics.append( pygame.image.load("res/zombie_up.png") )
+    zombie_pics.append( pygame.image.load("res/zombie_right.png") )
+    zombie_pics.append( pygame.image.load("res/zombie_down.png") )
+    zombie_pics.append( pygame.image.load("res/zombie_left.png") )
+
+
+    knight = Character(width, height, knight_pics, 2)
+    zombie = Character(width, height, zombie_pics)
+    return knight, zombie
