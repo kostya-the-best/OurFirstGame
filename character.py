@@ -1,13 +1,15 @@
 __author__ = 'Volodymyr and Kostya'
+import pygame
 
 DIR_UP = 0
 DIR_RIGHT = 1
 DIR_DOWN = 2
 DIR_LEFT = 3
 
-class Character:
+class Character(pygame.sprite.Sprite):
 
     def __init__(self, width, height, pictures, run = 1):
+        pygame.sprite.Sprite.__init__(self)
         self.sprites = []
         for pic in pictures:
             self.sprites.append( pic )
@@ -53,8 +55,9 @@ class Character:
     def stab(self, action):
         self.action = action
 
-    def update(self):
+    def update(self, *args):
         self.rect = self.rect.move(self.speed)
+        self.image = self.get_sprite()
 
     def stop(self):
         self.speed = [0, 0]
@@ -79,6 +82,6 @@ def init(width, height):
     zombie_pics.append( pygame.image.load("res/zombie_left.png") )
 
 
-    knight = Character(width, height, knight_pics, 2)
-    zombie = Character(width, height, zombie_pics)
+    knight = Character(width, height, knight_pics, 5)
+    zombie = Character(width, height, zombie_pics, 3)
     return knight, zombie

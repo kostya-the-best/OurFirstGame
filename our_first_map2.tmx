@@ -30,7 +30,4 @@
    eJztk60OgDAMhAcCw49gM4DC8P6PSBFLFtL1Eri5is+0yd2u7WIIIToqnXAIQwPd3tDdhFlYyb4J6Lbyzbp7JTPqf+UUJkO77JeZ0X4Y3knp5dpCmre2S+1dT20ULuK8tQzWu1i3rfmiXTB8a3lyn50Z/VW0i7++librjt950I2y7thxWNxHUCve
   </data>
  </layer>
- <objectgroup name="Charz">
-  <object id="8" name="Knight" gid="7" x="0" y="32" width="32" height="32"/>
- </objectgroup>
 </map>
