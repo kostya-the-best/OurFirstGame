@@ -9,7 +9,7 @@ def init_screen():
     return screen
 
 def load_map(screen):
-    tilemap = tmx.load('res/our_first_map2.tmx', screen.get_size())
+    tilemap = tmx.load('our_first_map2.tmx', screen.get_size())
     tilemap.set_focus(0, 0)
     return tilemap
 
