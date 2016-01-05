@@ -1,4 +1,4 @@
-__author__ = 'Volodymyr'
+__author__ = 'Volodymyr and Kostya'
 
 
 DIR_UP = 0

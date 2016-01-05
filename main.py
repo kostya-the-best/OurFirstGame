@@ -17,7 +17,6 @@ def chase(zombie, knight):
         zombie.move(DIR_LEFT)
     elif zombie.rect.centerx < knight.rect.centerx:
         zombie.move(DIR_RIGHT)
-        
     if zombie.rect.centery > knight.rect.centery:
         zombie.move(DIR_UP)
     elif zombie.rect.centery < knight.rect.centery:
