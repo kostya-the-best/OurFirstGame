@@ -2,6 +2,7 @@ import pygame
 import tmx
 import time, random
 from character import init
+from world import World
 from movement import handle_knight_move, handle_zombie_move, has_knight_won
 
 
@@ -31,6 +32,8 @@ def popup(screen, font, result):
 def main():
     screen = init_screen()
     tilemap = load_map(screen)
+    w = World(tilemap)
+
     clock = pygame.time.Clock()
     font = pygame.font.SysFont('Arial', 25)
 
@@ -38,10 +41,11 @@ def main():
     sprite_layer.set_view(0, 0, *screen.get_size())
     tilemap.layers.append(sprite_layer)
 
-    knight,zombie = init(*screen.get_size())
+    knight,zombie = init(w)
     sprite_layer.add(knight,zombie)
 
-    knight.rect = knight.rect.move(200,0)
+    knight.rect = knight.rect.move(300,0)
+
 
     while 1:
         dt = clock.tick(30)
@@ -50,7 +54,7 @@ def main():
             if event.type == pygame.QUIT:
                 exit()
             handle_knight_move(knight, event)
-        handle_zombie_move(zombie, knight)
+        # handle_zombie_move(zombie, knight)
 
         result = has_knight_won(zombie, knight)
         if result is not None:

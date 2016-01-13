@@ -6,28 +6,160 @@
    <terrain name="grass" tile="-1"/>
    <terrain name="water" tile="-1"/>
   </terraintypes>
-  <tile id="0" terrain="0,0,0,1"/>
-  <tile id="1" terrain="0,0,1,1"/>
-  <tile id="5" terrain="0,0,1,0"/>
-  <tile id="9" terrain="1,1,1,0"/>
-  <tile id="10" terrain="1,1,0,0"/>
-  <tile id="11" terrain="1,1,0,1"/>
-  <tile id="12" terrain="1,1,1,1"/>
-  <tile id="13" terrain="1,0,1,0"/>
-  <tile id="17" terrain="1,0,1,0"/>
-  <tile id="18" terrain="0,0,0,0"/>
-  <tile id="19" terrain="0,1,0,1"/>
-  <tile id="24" terrain="0,1,0,1"/>
-  <tile id="25" terrain="1,0,1,1"/>
-  <tile id="26" terrain="0,0,1,1"/>
-  <tile id="27" terrain="0,1,1,1"/>
-  <tile id="32" terrain="0,1,0,0"/>
-  <tile id="36" terrain="1,1,0,0"/>
-  <tile id="37" terrain="1,0,0,0"/>
+  <tile id="0" terrain="0,0,0,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1" terrain="0,0,1,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5" terrain="0,0,1,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="9" terrain="1,1,1,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10" terrain="1,1,0,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="11" terrain="1,1,0,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12" terrain="1,1,1,1">
+   <properties>
+    <property name="terrain" value="0"/>
+   </properties>
+  </tile>
+  <tile id="13" terrain="1,0,1,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="17" terrain="1,0,1,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="18" terrain="0,0,0,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="19" terrain="0,1,0,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="terrain" value="0"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="24" terrain="0,1,0,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="25" terrain="1,0,1,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="26" terrain="0,0,1,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27" terrain="0,1,1,1">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="terrain" value="0"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="32" terrain="0,1,0,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="36" terrain="1,1,0,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
+  <tile id="37" terrain="1,0,0,0">
+   <properties>
+    <property name="terrain" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Tile Layer 1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJztk60OgDAMhAcCw49gM4DC8P6PSBFLFtL1Eri5is+0yd2u7WIIIToqnXAIQwPd3tDdhFlYyb4J6Lbyzbp7JTPqf+UUJkO77JeZ0X4Y3knp5dpCmre2S+1dT20ULuK8tQzWu1i3rfmiXTB8a3lyn50Z/VW0i7++librjt950I2y7thxWNxHUCve
+   eJztk7EOgDAIRKuDi9ZBu6iTg/7/J0oHEmIoJC1sHd5SzB0nEEMIkWEDdkc4z8zq7PsQZsLLfDsAFzAZ95B1R0H3cJpBUnS9fFH3LGTW6rXcwCJo0zrNrM3HwjsxNXxrvQH8n9wsub7yW+kGajNzGaS+rHab89VmYeFbyoN168zarWqzaPWVNK32+J9H21GrPe50rPgAHukrwQ==
   </data>
  </layer>
 </map>

@@ -8,7 +8,7 @@ DIR_LEFT = 3
 
 class Character(pygame.sprite.Sprite):
 
-    def __init__(self, width, height, pictures, run = 1):
+    def __init__(self, world, pictures, run = 1):
         pygame.sprite.Sprite.__init__(self)
         self.sprites = []
         for pic in pictures:
@@ -16,7 +16,7 @@ class Character(pygame.sprite.Sprite):
 
         self.rect = self.sprites[0].get_rect()
         self.direction = DIR_UP
-        self.width, self.height = width, height
+        self.world = world
         self.speed = [0,0]
         self.run = run
         self.action = 0
@@ -39,31 +39,33 @@ class Character(pygame.sprite.Sprite):
         if direction == DIR_DOWN:
             self.speed = [0, self.run]
 
-        if self.rect.left < 0:
-            if self.speed[0] < 0:
-                self.speed[0] = 0
-        if self.rect.right > self.width:
-            if self.speed[0] > 0:
-                self.speed[0] = 0
-        if self.rect.top < 0:
-            if self.speed[1] < 0:
-                self.speed[1] = 0
-        if self.rect.bottom > self.height:
-            if self.speed[1] > 0:
-                self.speed[1] = 0
+        # if self.rect.left < 0:
+        #     if self.speed[0] < 0:
+        #         self.speed[0] = 0
+        # if self.rect.right > self.width:
+        #     if self.speed[0] > 0:
+        #         self.speed[0] = 0
+        # if self.rect.top < 0:
+        #     if self.speed[1] < 0:
+        #         self.speed[1] = 0
+        # if self.rect.bottom > self.height:
+        #     if self.speed[1] > 0:
+        #         self.speed[1] = 0
 
     def stab(self, action):
         self.action = action
 
     def update(self, *args):
-        self.rect = self.rect.move(self.speed)
+        rect = self.rect.move(self.speed)
+        if (self.world.able_walk(rect)):
+            self.rect = rect
         self.image = self.get_sprite()
 
     def stop(self):
         self.speed = [0, 0]
 
 
-def init(width, height):
+def init(world):
     knight_pics = []
     knight_pics.append( pygame.image.load("res/knight_up.png") )
     knight_pics.append( pygame.image.load("res/knight_right.png") )
@@ -82,6 +84,6 @@ def init(width, height):
     zombie_pics.append( pygame.image.load("res/zombie_left.png") )
 
 
-    knight = Character(width, height, knight_pics, 5)
-    zombie = Character(width, height, zombie_pics, 3)
+    knight = Character(world, knight_pics, 5)
+    zombie = Character(world, zombie_pics, 3)
     return knight, zombie
