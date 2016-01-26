@@ -22,35 +22,43 @@ class Character(pygame.sprite.Sprite):
         self.action = 0
 
     def get_sprite(self):
-        index = self.direction
+        # index = self.direction
+        if self.speed[0] < 0:
+            index = DIR_LEFT
+        elif self.speed[0] > 0:
+            index = DIR_RIGHT
+        elif self.speed[1] > 0:
+            index = DIR_DOWN
+        else:
+            index = DIR_UP
+
         if self.action == 1:
             index += 4
         return self.sprites[index]
 
-    def move(self, direction):
+    def move(self, direction, start_action = True):
         # print("char", direction)
         self.direction = direction
         if direction == DIR_LEFT:
-            self.speed = [-self.run, 0]
+            if start_action:
+                self.speed[0] = -self.run
+            else:
+                self.speed[0] = 0
         if direction == DIR_RIGHT:
-            self.speed = [self.run, 0]
+            if start_action:
+                self.speed[0] = self.run
+            else:
+                self.speed[0] = 0
         if direction == DIR_UP:
-            self.speed = [0, -self.run]
+            if start_action:
+                self.speed[1] = -self.run
+            else:
+                self.speed[1] = 0
         if direction == DIR_DOWN:
-            self.speed = [0, self.run]
-
-        # if self.rect.left < 0:
-        #     if self.speed[0] < 0:
-        #         self.speed[0] = 0
-        # if self.rect.right > self.width:
-        #     if self.speed[0] > 0:
-        #         self.speed[0] = 0
-        # if self.rect.top < 0:
-        #     if self.speed[1] < 0:
-        #         self.speed[1] = 0
-        # if self.rect.bottom > self.height:
-        #     if self.speed[1] > 0:
-        #         self.speed[1] = 0
+            if start_action:
+                self.speed[1] = self.run
+            else:
+                self.speed[1] = 0
 
     def stab(self, action):
         self.action = action

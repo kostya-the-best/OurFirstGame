@@ -4,20 +4,19 @@ from character import Character, DIR_DOWN, DIR_LEFT, DIR_RIGHT, DIR_UP, init
 
 
 def handle_knight_move(knight, event):
-    if event.type == pygame.KEYDOWN:
+    if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
+        key_pressed = event.type == pygame.KEYDOWN
         if event.key == pygame.K_LEFT:
-            knight.move(DIR_LEFT)
+            knight.move(DIR_LEFT, key_pressed)
         if event.key == pygame.K_RIGHT:
-            knight.move(DIR_RIGHT)
+            knight.move(DIR_RIGHT, key_pressed)
         if event.key == pygame.K_UP:
-            knight.move(DIR_UP)
+            knight.move(DIR_UP, key_pressed)
         if event.key == pygame.K_DOWN:
-            knight.move(DIR_DOWN)
+            knight.move(DIR_DOWN, key_pressed)
         if event.key == pygame.K_SPACE:
-            knight.stab(1)
-    if event.type == pygame.KEYUP:
-        knight.stop()
-        knight.stab(0)
+            knight.stab(key_pressed)
+
 
 
 def handle_zombie_move(zombie, knight):
